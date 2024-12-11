@@ -13,6 +13,11 @@ h1, h2, h3, h4, .h1, .h2, .h3, .h4{
     --red : rgb(228,32,43);
 }
 
+body{
+    background-color: var(--black);
+    color: var(--yellow);
+}
+
 .bg-yellow{
     background-color: var(--yellow);
 }
@@ -58,3 +63,135 @@ h1, h2, h3, h4, .h1, .h2, .h3, .h4{
 .logo{
     width: 50px;
 }
+
+.logo2{
+    width: 100px;
+    transition: 0.5s;
+}
+
+/* fine navbar */
+
+/* Header */
+.header{
+    background-image: linear-gradient(rgba(0,0,0), transparent , rgba(0,0,0)), url(https://static.vecteezy.com/system/resources/thumbnails/017/563/240/original/hyperspace-for-scientific-films-screensaver-universe-background-4k-footage-free-video.jpg);
+    background-position: center;
+    background-size: cover;
+}
+
+.btn-custom{
+    color: var(--yellow);
+    background-color: var(--black);
+    border: 2px solid var(--yellow);
+    border-radius: 10px;
+    margin: 0px 15px;
+    padding: 20px 30px;
+    transition: 0.5s;
+}
+
+.btn-custom:hover{
+    color: var(--black);
+    background-color: var(--yellow);
+    transform: scale(1.1);
+}
+/* fine header */
+
+/* Positioned */
+
+.positioned{
+    position: relative;
+    top: -70px;
+}
+
+.col-custom{
+    padding: 10px;
+    border: 2px solid var(--black);
+    cursor: pointer;
+    transition: 0.5s;
+    color: var(--black);
+
+}
+
+.col-custom:hover{
+    transform: scale(1.1);
+    background-color: var(--black);
+    color: var(--red);
+    border: 2px solid var(--red);
+}
+
+@media screen and (max-width : 600px) {
+    .positioned{
+        position: static;
+    }
+}
+
+
+/* Numeri */
+
+.number{
+    font-size: 50px;
+    font-weight: 900;
+    
+}
+
+
+/* Swiper */
+
+.swiper{
+    height: 600px;
+}
+
+
+.card-review{
+    height: 250px;
+    width: 500px;
+    border: 2px solid var(--yellow);
+    border-radius: 20px;
+}
+
+.swiper-slide{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+/* pagina annunci */
+
+.accordion-item{
+    background-color: var(--black);
+    color: var(--yellow);
+}
+
+.accordion-button{
+    background-color: var(--yellow);
+    color: var(--black);
+}
+
+.accordion-button:not(.collapsed){
+background-color:var(--black);
+color: var(--red);
+box-shadow: none;
+}
+
+.accordion-button:focus{
+    box-shadow: none;
+}
+
+
+.card-custom{
+    width: 30%;
+    border: 2px solid var(--yellow);
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.img-card{
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+    

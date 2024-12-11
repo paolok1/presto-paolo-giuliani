@@ -1,0 +1,51 @@
+[
+    {
+        "id": 1,
+        "name": "Fiat 500",
+        "category": "Motori",
+        "price": "7000.00" 
+    },
+    {
+        "id": 2,
+        "name": "Mountain Bike",
+        "category": "Sport",
+        "price": "400.00" 
+    },    {
+        "id": 3,
+        "name": "Xiaomi 12",
+        "category": "Tech",
+        "price": "150.00" 
+    },    {
+        "id": 4,
+        "name": "Felpa LV",
+        "category": "Abbigliamento",
+        "price": "100.00" 
+    },    {
+        "id": 5,
+        "name": "Pentola pietra lavica",
+        "category": "Articoli casa",
+        "price": "20.00" 
+    },    {
+        "id": 6,
+        "name": "scarpe 44",
+        "category": "Calzature",
+        "price": "70.00" 
+    },    {
+        "id": 8,
+        "name": "Renault Twingo",
+        "category": "Motori",
+        "price": "5000.00" 
+    },    {
+        "id": 9,
+        "name": "monopattino",
+        "category": "Sport",
+        "price": "100.00" 
+    },    {
+        "id": 10,
+        "name": "Samsung tv Oled 55",
+        "category": "Tech",
+        "price": "650.00" 
+    }
+]
+
+    
