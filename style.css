@@ -193,5 +193,6 @@ box-shadow: none;
 .img-card{
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
+    background-size: cover;
 }
     

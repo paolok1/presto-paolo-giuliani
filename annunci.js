@@ -129,7 +129,7 @@ function filterCategories(categoria){
 
 
     function filterByPrice() {
-        let filtered = data.filter((annuncio)=> annuncio.price <= priceInput.value);
+        let filtered = data.filter((annuncio)=> +annuncio.price <= priceInput.value);
         showCards(filtered)
     }
     
@@ -137,7 +137,20 @@ function filterCategories(categoria){
             priceValue.innerHTML = priceInput.value;
             filterByPrice();
         })
+
+
+        let wordInput= document.querySelector('#wordInput');
+
+
+        function filterByWord(parola) {
+            let filtered = data.filter( (annuncio)=> annuncio.name.toLowerCase().includes(parola.toLowerCase() ) );
+            showCards(filtered);
+        }
+
+        wordInput.addEventListener('input', ()=>{
+            filterByWord(wordInput.value);
+        })
     
-} );   
+} );  
 
 
