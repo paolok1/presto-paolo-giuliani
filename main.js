@@ -35,7 +35,7 @@ window.addEventListener('scroll',()=>{
 
    spadaLaser.addEventListener('click', ()=>{
     if (check == false) {
-    spadaLaser.style.transform = 'rotate(-180deg)';
+    spadaLaser.style.transform = 'rotate(-360deg)';
     check = true;
     }else{
         spadaLaser.style.transform = 'rotate(0deg)';
