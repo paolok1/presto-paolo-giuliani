@@ -86,22 +86,36 @@ function showCards(array) {
 showCards(data);
 
 
-function filterCategories(categoria){
+let radioButtons = document.querySelectorAll('.form-check-input');
+function filterByCategories(array){
     // in questa funzione ho bisogno di ottenere un nuovo Array partendo da data e gli elementi
     // del nuovo Array dovranno soddisfare la condizione per la quale la loro category sia uguale 
     // alla categoria che stiamo passando alla funzione.
+
+    // la categoria voglio trovarla partendo dalla lista di tutti i bottoni (buttons) e usare
+    // il metodo degli array .find() su questa lista. La condizione da utilzzare è il bottone con l'attributo "checked".
+
+    let categoria = Array.from(radioButtons).find((bottone)=> bottone.checked ).id;
+    // let arrayFromNodeList = Array.from(radioButtons);
+    // let button = arrayFromNodeList.find((bottone)=>bottone.checked);
+    // let categoria = button.id;
+    // Questa sintassi è la stessa di: let categoria = Array.from(radioButtons).find((bottone)=>bottone.checked)
+    // scritta passo per passo.
     if (categoria != 'all') {
         
-        let filtered = data.filter((annuncio)=> annuncio.category == categoria )
-        showCards(filtered);
+        let filtered = array.filter((annuncio)=> annuncio.category == categoria )
+        return filtered;
     }else{
-        showCards(data);
+        return array ;
     }
 }
-    let radioButtons = document.querySelectorAll('.form-check-input');
-        radioButtons.forEach((button) =>{
-            button.addEventListener('click', ()=>{
-                filterCategories(button.id);
+
+
+radioButtons.forEach((button) =>{
+    button.addEventListener('click', ()=>{
+                setPriceInput();
+
+                globalFilter();
             })
         })
 
@@ -114,7 +128,7 @@ function filterCategories(categoria){
         // che contenga solo i prezzi, a quel punto lo ordino in maniera crescente o decrescente e 
         //  prendermi l'elemento con il valore più alto.
 
-        let prices = data.map((annuncio)=> +annuncio.price);
+        let prices = filterByCategories(data).map((annuncio)=> +annuncio.price);
         prices.sort((a, b)=> a - b );
         let maxPrice = Math.ceil(prices.pop());
         priceInput.max = maxPrice;
@@ -128,29 +142,44 @@ function filterCategories(categoria){
         setPriceInput();
 
 
-    function filterByPrice() {
-        let filtered = data.filter((annuncio)=> +annuncio.price <= priceInput.value);
-        showCards(filtered)
+    function filterByPrice(array) {
+        let filtered = array.filter((annuncio)=> +annuncio.price <= priceInput.value);
+        return filtered;
     }
     
         priceInput.addEventListener('input', ()=>{
             priceValue.innerHTML = priceInput.value;
-            filterByPrice();
+            globalFilter();
         })
 
 
         let wordInput= document.querySelector('#wordInput');
 
 
-        function filterByWord(parola) {
-            let filtered = data.filter( (annuncio)=> annuncio.name.toLowerCase().includes(parola.toLowerCase() ) );
-            showCards(filtered);
+        function filterByWord(array) {
+            let filtered = array.filter( (annuncio)=> annuncio.name.toLowerCase().includes(wordInput.value.toLowerCase() ) );
+            
+            console.log(filtered);
+            return filtered;
+            
         }
 
         wordInput.addEventListener('input', ()=>{
-            filterByWord(wordInput.value);
+           globalFilter();
         })
+
+        function globalFilter() {
+            let filteredByCategories = filterByCategories(data); 
+            let filteredByPrice = filterByPrice(filteredByCategories);
+            let filteredByWord = filterByWord(filteredByPrice);
+
+            showCards(filteredByWord);
+        }
     
 } );  
+
+// quello di cui abbiamo bisogno è che ad ogni evento scattino tutte e tre le funzioni ma
+// non siano applicate tutte e tre sull'array data, bensì siano concatenate ed ognuna filtri
+// il risultato della funzione di filtro precedente.
 
 
