@@ -6,12 +6,12 @@
 // di collegare il nostro foglio JS ad un link esterno(JSON).
 // ci restituisce i dati prelevati sotto forma di PROMISE(PROMESSA) ossia
 // promette che ci restituirà questi dati.
-// .then(): questo metodo ci permette di convertire la PROMISE nel dato strutturale e di
+// .then(): questo metodo ci permette di convertire la PROMISE nel dato strutturale (OGGETTO JS) e di
 //  poterlo utilizzare come tale su javascript.
 
-// 1. Fetch(): collego al json e ottengo una Promise;
-// 2. .Then(): converto la Promise in un dato strutturale JS;
-// 3. .Then(): utilizzare il dato ottenuto.
+// 1. Fetch(): mi collega al json e ottengo una Promise;
+// 2. .Then(): converte la Promise in un dato strutturale JS;
+// 3. .Then(): mi prmette di utilizzare il dato ottenuto.
 
 // .json(): metodo della promise che mi permette di convertirla in OGGETTO JS.
 
@@ -78,6 +78,7 @@ function showCards(array) {
             <p class="h2" title = "${annuncio.name}">${truncateWord(annuncio.name)}</p>
             <p class="h4">${annuncio.category}</p>
             <p class="lead">${annuncio.price} €</p>
+            
         `;
         cardWrapper.appendChild(div);
     })
@@ -159,7 +160,7 @@ radioButtons.forEach((button) =>{
         function filterByWord(array) {
             let filtered = array.filter( (annuncio)=> annuncio.name.toLowerCase().includes(wordInput.value.toLowerCase() ) );
             
-            console.log(filtered);
+            
             return filtered;
             
         }
@@ -168,11 +169,22 @@ radioButtons.forEach((button) =>{
            globalFilter();
         })
 
+        let typeInput = document.querySelector('#typeInput');
+
+        function filterByType(array) {
+            let filtered = array.filter((annuncio)=> annuncio.type.toLowerCase().includes(typeInput.value.toLowerCase()));
+            return filtered;
+        }
+
+        typeInput.addEventListener('input', ()=>{
+            globalFilter();
+        })
+
         function globalFilter() {
             let filteredByCategories = filterByCategories(data); 
             let filteredByPrice = filterByPrice(filteredByCategories);
             let filteredByWord = filterByWord(filteredByPrice);
-
+            let filteredByType = filterByType(filteredByWord);
             showCards(filteredByWord);
         }
     
